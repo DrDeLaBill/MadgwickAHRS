@@ -33,6 +33,7 @@ private:
     float roll;
     float pitch;
     float yaw;
+    float grav[3];
     char anglesComputed;
     void computeAngles();
 
@@ -69,6 +70,24 @@ public:
     float getYawRadians() {
         if (!anglesComputed) computeAngles();
         return yaw;
+    }
+    void getQuaternion(float *w, float *x, float *y, float *z) {
+        *w = q0;
+        *x = q1;
+        *y = q2;
+        *z = q3;
+    }
+    void setQuaternion(float w, float x, float y, float z) {
+        q0 = w;
+        q1 = x;
+        q2 = y;
+        q3 = z;
+    }
+    void getGravityVector(float *x, float *y, float *z) {
+        if (!anglesComputed) computeAngles();
+        *x = grav[0];
+        *y = grav[1];
+        *z = grav[2];
     }
 };
 #endif
