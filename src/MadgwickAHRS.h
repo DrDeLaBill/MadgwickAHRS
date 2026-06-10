@@ -89,6 +89,8 @@ public:
         *y = grav[1];
         *z = grav[2];
     }
+    void setBeta(float beta) { this->beta = beta; }
+    float getBeta() { return this->beta; }
 };
 #endif
 
